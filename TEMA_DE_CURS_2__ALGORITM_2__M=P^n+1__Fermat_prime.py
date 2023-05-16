@@ -44,11 +44,11 @@ message = "Hello, world!"
 message1 = "Linia c) elementele de camp asociate valorilor numerice de la linia b) IN FORMA POLINOMIALA REDUSA Forma vectorialaLinia d) elementele de camp asociate valorilor numerice de la linia b) IN FORMA EXPONENTIALA {Se pune doar exponentul} Poate fi adaugat un gbis care sa aiba reprezentarea exponentiala al lui g Linia h) reprezinta Fxi valorile numerice obtinute in urma calculelor functiei polinomiale de permutare (yi). Obtinem eleme"
 fermat_prime = generate_fermat_prime()
 print(f"fermat_prime = {fermat_prime}")
-permutation = generate_permutation(len(message1))  # Aici am modificat pentru a avea lungimea corectă a permutării
+permutation = generate_permutation(len(message))  # Aici am modificat pentru a avea lungimea corectă a permutării
 print(f"permutation = {permutation}")
-encrypted_message = encrypt(message1, permutation)
+encrypted_message = encrypt(message, permutation)
 decrypted_message = decrypt(encrypted_message, permutation)
 
-print("Original message:", message1)
+print("Original message:", message)
 print("Encrypted message:", encrypted_message)
 print("Decrypted message:", decrypted_message)
