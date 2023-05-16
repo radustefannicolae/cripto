@@ -64,7 +64,8 @@ def verify_coding_theorem(text, encoded_text, huffman_dict):
 def encode_text(text, huffman_dict):
     encoded_text = ""
     for char in text:
-        encoded_text += huffman_dict[char]
+        if char in huffman_dict:
+            encoded_text += huffman_dict[char]
     return encoded_text
 
 with open("text2.txt", "r", encoding="utf-8") as f:

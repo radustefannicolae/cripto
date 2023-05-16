@@ -4,6 +4,7 @@ import string
 import unicodedata
 from collections import Counter
 import math
+import re
 
 def build_huffman_tree(freq):
     heap = [[wt, [sym, ""]] for sym, wt in freq.items()]
@@ -23,7 +24,7 @@ def huffman_code(text):
     for sym in text:
         freq[sym] += 1
     huff = build_huffman_tree(freq)
-    return {sym: code for sym, code in huff}
+    return {sym: code for sym, code in huff }
 
 def calculate_entropy(freq):
     total_count = sum(freq.values())
@@ -71,40 +72,41 @@ def encode_text(text, huffman_dict):
 with open("text2.txt", "r", encoding="utf-8") as f:
     text = f.read()
 
+#text = re.sub(r'[^a-zA-ZăâîșțĂÂÎȘȚ]', '', text)
 # normalize the text
 text = unicodedata.normalize("NFKD", text).lower()
 
 # build the character frequency dictionary
 char_counts = defaultdict(int)
-for char in text:
+for char in text :
     char_counts[char] += 1
 
 # build the Huffman code dictionary
 huffman_dict = huffman_code(char_counts)
 
 # print the code words list
-for char, code in sorted(huffman_dict.items()):
+for char, code in sorted(huffman_dict.items()) :
     print(f"{char}: {code}")
 
 # calculate the entropy of the information source
 entropy = calculate_entropy(char_counts)
-print(f"Entropia sursei informationale: {entropy}")
+print(f"Entropia sursei informationale: {entropy:.3}")
 
 # calculate the average code length
 average_code_length = calculate_average_code_length(huffman_dict, char_counts)
-print(f"Lungimea medie a codului: {average_code_length}")
+print(f"Lungimea medie a codului: {average_code_length:.3}")
 
 # calculate the capacity of the code
 capacity = calculate_capacity(huffman_dict)
-print(f"Capacitatea codului: {capacity}")
+print(f"Capacitatea codului: {capacity:.3}")
 
 # calculate the efficiency of the code
 efficiency = calculate_efficiency(entropy, average_code_length)
-print(f"Eficienta codului: {efficiency}")
+print(f"Eficienta codului: {efficiency:.3}")
 
 # calculate the non-uniform redundancy
 redundancy = calculate_redundancy(entropy, capacity)
-print(f"Redundanta neuniforma: {redundancy}")
+print(f"Redundanta neuniforma: {redundancy:.2}")
 
 # verify the coding theorem
 coding_theorem_verified = verify_coding_theorem(text, encode_text(text, huffman_dict), huffman_dict)

@@ -1,7 +1,7 @@
 import string
 import unicodedata
 from collections import Counter
-
+import re
 # definim alfabetul limbii romane, inclusiv diacriticele
 alphabet = string.ascii_lowercase + "ăîâșțĂÎÂȘȚ"
 characters = []
@@ -33,9 +33,11 @@ counting_sorted = dict(sorted(counting.items(), key=lambda x: x[0]))
 
 # excludem simbolurile din dictionarul counting_sorted
 print(counting_sorted.items())
-counting_sorted = {char: count for char, count in counting_sorted.items() if char not in alphabet or char not in specialCharList}
+counting_sorted = {char: count for char, count in counting_sorted.items() if re.match(r'[a-zA-ZăâîșțĂÂÎȘȚ]', char)}
+total_words=len(counting_sorted)
 print(counting_sorted.items())
 # afisam dictionarul counting_sorted
 
 for char, count in counting_sorted.items():
-    print(char, count)
+    p = count / total_words
+    print(f"char:{char}, count:{count}, p:{p:.2%}")
