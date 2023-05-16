@@ -30,8 +30,8 @@ def calculate_entropy(freq):
     entropy = 0.0
     for count in freq.values():
         probability = count / total_count
-        entropy += probability * math.log2(probability)
-    return -entropy
+        entropy -= probability * math.log2(probability)
+    return entropy
 
 def calculate_average_code_length(huffman_dict, freq):
     total_count = sum(freq.values())
@@ -41,13 +41,13 @@ def calculate_average_code_length(huffman_dict, freq):
     return total_length
 
 def calculate_capacity(huffman_dict):
-    return math.log2(len(huffman_dict))
+    return math.log2(2)
 
 def calculate_efficiency(entropy, average_code_length):
     return entropy / average_code_length
 
 def calculate_redundancy(entropy, capacity):
-    return 1 - (entropy / capacity)
+    return 1 - efficiency
 
 def verify_coding_theorem(text, encoded_text, huffman_dict):
     decoded_text = ""

@@ -36,5 +36,6 @@ print(counting_sorted.items())
 counting_sorted = {char: count for char, count in counting_sorted.items() if char not in alphabet or char not in specialCharList}
 print(counting_sorted.items())
 # afisam dictionarul counting_sorted
+
 for char, count in counting_sorted.items():
     print(char, count)
