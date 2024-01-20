@@ -19,3 +19,5 @@ Observatii
 Daca textul analizat depaseste 50,000 de caractere, rezultatele vor fi mult mai precise.
 Ambele metode de codificare (Huffman si Shannon-Fano) au fost implementate pentru a oferi o comparatie a performantelor.
 Pentru detalii suplimentare, consultati raportul detaliat sau documentatia furnizata.
+
+Autor: Nicolae Radu-Stefan
