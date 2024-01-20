@@ -1,4 +1,5 @@
 Analiza Statistica a Limbii Romane
+
 Etapa 1: Model Probabilistic al Limbii
 Pentru a realiza analiza statistica a limbii romane, am implementat un model probabilistic bazat pe frecventa de aparitie a caracterelor intr-un text de minim 10,000 de caractere. Am aplicat legea numerelor mari din probabilitate pentru a asocia frecventele cu probabilitatile caracterelor.
 
